@@ -16,6 +16,6 @@ public class GuestbookDTO {
     private String title;
     private String content;
     private String writer;
-    private LocalDateTime regDate, modDate;
+    private LocalDateTime regdate, modate;
 
 }

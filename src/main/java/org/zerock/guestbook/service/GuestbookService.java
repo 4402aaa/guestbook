@@ -6,11 +6,12 @@ import org.zerock.guestbook.dto.PageResultDTO;
 import org.zerock.guestbook.entity.Guestbook;
 
 public interface GuestbookService {
+
     Long register(GuestbookDTO dto);
-
     PageResultDTO<GuestbookDTO,Guestbook> getList(PageRequestDTO requestDTO);
+    GuestbookDTO read(long gno);
 
-    //dto로 들어오면 entity로 변환
+    //dto->Entity
     default Guestbook dtoToEntity(GuestbookDTO dto) {
         Guestbook entity = Guestbook.builder()
                 .gno(dto.getGno())
@@ -21,6 +22,7 @@ public interface GuestbookService {
         return entity;
     }
 
+    /*Entity->dto*/
     default  GuestbookDTO entityToDto(Guestbook entity){
         GuestbookDTO dto = GuestbookDTO.builder()
                 .gno(entity.getGno())
